@@ -34,9 +34,19 @@ function update(product, data) {
   });
 }
 
+function _delete(product) {
+  return new Promise((resolve, reject) => {
+    const index = products.findIndex((p) => p.id === product.id);
+    products.splice(index, 1);
+    writeDataToFile("./data/products.json", products);
+    resolve(product);
+  });
+}
+
 module.exports = {
   findAll,
   findById,
   create,
   update,
+  delete: _delete,
 };
