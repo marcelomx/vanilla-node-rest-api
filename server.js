@@ -1,12 +1,5 @@
 const http = require("http");
-const products = [
-  {
-    id: 1,
-    title: "Test product",
-    description: "Test product ",
-    price: 1.95,
-  },
-];
+const products = required("./data/products.json");
 
 const server = http.createServer((req, res) => {
   res.statusCode = 200;

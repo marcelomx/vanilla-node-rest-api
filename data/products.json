@@ -1,0 +1,20 @@
+[
+  {
+    "id": "afee489a-2013-42d8-9373-bd914a1173b6",
+    "title": "Samsung Galaxy A71",
+    "description": "A new description",
+    "price": 499.99
+  },
+  {
+    "id": "cb881838-573f-4482-ba8b-c5eb8cdb0f91",
+    "title": "iPhone 12x",
+    "description": "A new description",
+    "price": 999.99
+  },
+  {
+    "id": "b4c2182f-01af-4aeb-9073-2c89824249bc",
+    "title": "Blue Pen",
+    "description": "A new description",
+    "price": 3.99
+  }
+]
