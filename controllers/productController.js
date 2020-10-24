@@ -39,8 +39,31 @@ async function createProduct(req, res) {
   }
 }
 
+async function updateProduct(req, res, id) {
+  try {
+    const product = await Product.findById(id);
+    if (!product) {
+      res.writeHead(404, { "Content-Type": "application/json" });
+      res.end(JSON.stringify({ message: "Product not found" }));
+    } else {
+      const body = await getPostData(req);
+      const { title, description, price } = JSON.parse(body);
+      const updatedProduct = await Product.update(product, {
+        title,
+        description,
+        price,
+      });
+      res.writeHead(200, { "Content-Type": "application/json" });
+      res.end(JSON.stringify(updatedProduct));
+    }
+  } catch (e) {
+    console.log(e);
+  }
+}
+
 module.exports = {
   getProducts,
   getProduct,
   createProduct,
+  updateProduct,
 };
