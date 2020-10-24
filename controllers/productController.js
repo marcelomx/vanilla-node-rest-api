@@ -1,4 +1,5 @@
 const Product = require("../models/productModel");
+const { getPostData } = require("../utils");
 
 async function getProducts(req, res) {
   try {
@@ -26,7 +27,20 @@ async function getProduct(req, res, id) {
   }
 }
 
+async function createProduct(req, res) {
+  try {
+    const body = await getPostData(req);
+    const { title, description, price } = JSON.parse(body);
+    const newProduct = await Product.create({ title, description, price });
+    res.writeHead(201, { "Content-Type": "application/json" });
+    res.end(JSON.stringify(newProduct));
+  } catch (e) {
+    console.log(e);
+  }
+}
+
 module.exports = {
   getProducts,
   getProduct,
+  createProduct,
 };
